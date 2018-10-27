@@ -1,0 +1,131 @@
+Anshu Dwibhashi
+ad353
+Justin Tandon
+jt260
+
+Question 1: are the benchmark timings for StringStrand consistent 
+with the explanation below that the time to execute cutAndSplice is O(b2S)?
+
+Answer 1: The benchmark timings are indeed consistent with the
+explanation; the time taken for each run increases with respect
+to splice length, at the rate of (b^2) times splice length which
+can be seen by plotting the two. The time taken to execute cutAndSplice
+is indeed O(b2S).
+
+Question 2: are the benchmark timings for StringBuilderStrand 
+consistent with the explanation below that the time to execute 
+cutAndSplice is O(bS)?
+
+Answer 2:  The benchmark timings are indeed consistent with the
+explanation; the time taken for each run increases with respect
+to splice length, at the rate of (b) times splice length which
+can be seen by plotting the two. The time taken to execute cutAndSplice
+is indeed O(bS).
+
+Question 3: Explain why the time for LinkStrand does not change
+much at all over all the runs in the benchmark program. Explain why
+you think memory is exhausted at the specific strand size you see
+in your timings -- as compared to exhaustion for String and StringBuilder.
+
+Answer 3: Time for LinkStrand doesn't change much at all, because
+of the way we've implemented charAt, and append both of which are O(1)
+complexity.
+This means CharDnaIterator, and cutAndSplice and other such items
+that rely on the linked list perform at O(1) - constant time.
+
+
+Output for StringStrand Benchmark tests:
+===
+dna length = 4,639,221
+cutting at enzyme gaattc
+-----
+Class	                splicee	      recomb	time	appends
+-----
+StringStrand:	            256	      4,800,471	0.450	1290
+StringStrand:	            512	      4,965,591	0.464	1290
+StringStrand:	          1,024	      5,295,831	0.438	1290
+StringStrand:	          2,048	      5,956,311	0.563	1290
+StringStrand:	          4,096	      7,277,271	0.667	1290
+StringStrand:	          8,192	      9,919,191	1.086	1290
+StringStrand:	         16,384	     15,203,031	1.416	1290
+StringStrand:	         32,768	     25,770,711	2.638	1290
+StringStrand:	         65,536	     46,906,071	4.727	1290
+StringStrand:	        131,072	     89,176,791	12.652	1290
+StringStrand:	        262,144	    173,718,231	23.673	1290
+StringStrand:	        524,288	    342,801,111	46.592	1290
+StringStrand:	      1,048,576	    680,966,871	85.002	1290
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at StringStrand.append(StringStrand.java:70)
+	at IDnaStrand.cutAndSplice(IDnaStrand.java:41)
+	at DNABenchmark.strandSpliceBenchmark(DNABenchmark.java:67)
+	at DNABenchmark.main(DNABenchmark.java:113)
+===
+
+
+Output for StringBuilderStrand Benchmark tests:
+===
+dna length = 4,639,221
+cutting at enzyme gaattc
+-----
+Class	                splicee	      recomb	time	appends
+-----
+StringBuilderStrand:	            256	      4,800,471	0.029	1290
+StringBuilderStrand:	            512	      4,965,591	0.023	1290
+StringBuilderStrand:	          1,024	      5,295,831	0.007	1290
+StringBuilderStrand:	          2,048	      5,956,311	0.007	1290
+StringBuilderStrand:	          4,096	      7,277,271	0.012	1290
+StringBuilderStrand:	          8,192	      9,919,191	0.008	1290
+StringBuilderStrand:	         16,384	     15,203,031	0.015	1290
+StringBuilderStrand:	         32,768	     25,770,711	0.032	1290
+StringBuilderStrand:	         65,536	     46,906,071	0.036	1290
+StringBuilderStrand:	        131,072	     89,176,791	0.101	1290
+StringBuilderStrand:	        262,144	    173,718,231	0.207	1290
+StringBuilderStrand:	        524,288	    342,801,111	0.361	1290
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.util.Arrays.copyOf(Arrays.java:3744)
+	at java.base/java.lang.AbstractStringBuilder.ensureCapacityInternal(AbstractStringBuilder.java:146)
+	at java.base/java.lang.AbstractStringBuilder.append(AbstractStringBuilder.java:512)
+	at java.base/java.lang.StringBuilder.append(StringBuilder.java:141)
+	at StringBuilderStrand.append(StringBuilderStrand.java:70)
+	at IDnaStrand.cutAndSplice(IDnaStrand.java:41)
+	at DNABenchmark.strandSpliceBenchmark(DNABenchmark.java:67)
+	at DNABenchmark.main(DNABenchmark.java:113)
+===
+
+
+Output for LinkStrand Benchmark tests:
+===
+dna length = 4,639,221
+cutting at enzyme gaattc
+-----
+Class	                splicee	      recomb	time	appends
+-----
+LinkStrand:	            256	      4,796,630	0.025	1290
+LinkStrand:	            512	      4,961,750	0.019	1290
+LinkStrand:	          1,024	      5,291,990	0.004	1290
+LinkStrand:	          2,048	      5,952,470	0.005	1290
+LinkStrand:	          4,096	      7,273,430	0.004	1290
+LinkStrand:	          8,192	      9,915,350	0.004	1290
+LinkStrand:	         16,384	     15,199,190	0.005	1290
+LinkStrand:	         32,768	     25,766,870	0.005	1290
+LinkStrand:	         65,536	     46,902,230	0.004	1290
+LinkStrand:	        131,072	     89,172,950	0.005	1290
+LinkStrand:	        262,144	    173,714,390	0.003	1290
+LinkStrand:	        524,288	    342,797,270	0.005	1290
+LinkStrand:	      1,048,576	    680,963,030	0.006	1290
+LinkStrand:	      2,097,152	  1,357,294,550	0.004	1290
+LinkStrand:	      4,194,304	  2,709,957,590	0.006	1290
+LinkStrand:	      8,388,608	  5,415,283,670	0.006	1290
+LinkStrand:	     16,777,216	 10,825,935,830	0.005	1290
+LinkStrand:	     33,554,432	 21,647,240,150	0.007	1290
+LinkStrand:	     67,108,864	 43,289,848,790	0.008	1290
+LinkStrand:	    134,217,728	 86,575,066,070	0.006	1290
+LinkStrand:	    268,435,456	173,145,500,630	0.007	1290
+LinkStrand:	    536,870,912	346,286,369,750	0.007	1290
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.util.Arrays.copyOf(Arrays.java:3744)
+	at java.base/java.lang.AbstractStringBuilder.ensureCapacityInternal(AbstractStringBuilder.java:146)
+	at java.base/java.lang.AbstractStringBuilder.append(AbstractStringBuilder.java:512)
+	at java.base/java.lang.StringBuilder.append(StringBuilder.java:141)
+	at DNABenchmark.main(DNABenchmark.java:110)
+===

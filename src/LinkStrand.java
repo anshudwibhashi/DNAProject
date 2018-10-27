@@ -135,6 +135,7 @@ public class LinkStrand implements IDnaStrand{
 			newList.addToStart(new StringStrand(iter.info).reverse().toString());
 			iter = iter.next;
 		}
+		System.out.println("Reverdasdfds: "+newList.toString());
 		return newList;
 	}
 

@@ -3,7 +3,7 @@
  * This implementation uses Linked Lists to represent genomic/DNA data.
  * 
  * @author Anshu Dwibhashi
- * @date 26 February 2018, created.
+ * @date 26 October 2018, created.
  */
 public class LinkStrand implements IDnaStrand{
 	private int myAppends;
@@ -90,6 +90,9 @@ public class LinkStrand implements IDnaStrand{
 		return this;
 	}
 
+	/**
+	 * Reverse the linked list containing this strand.
+	 */
 	@Override
 	public IDnaStrand reverse() {
 		Node newList = null;

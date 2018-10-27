@@ -99,6 +99,7 @@ public class LinkStrand implements IDnaStrand{
 		Node newNode = new Node(dna);
 		newNode.next = myFirst;
 		myFirst = newNode;
+		mySize+=dna.length();
 	}
 
 	/*

@@ -102,29 +102,6 @@ public class LinkStrand implements IDnaStrand{
 		mySize+=dna.length();
 	}
 
-	/*
-
-	@Override
-	public IDnaStrand reverse() {
-		Node newList = null;
-		Node iter = myFirst;
-		while(iter != null) {
-			Node temp = iter;
-			iter = iter.next;
-			temp.info = new StringStrand(temp.info).reverse().toString();
-			temp.next = newList;
-			if (newList == null) {
-				myLast = temp;
-			}
-			newList = temp;
-		}
-		// Now we have a reversed list
-		myFirst = newList;
-		return this;
-	}
-
-	*/
-
 	/**
 	 * Reverse the linked list containing this strand.
 	 */
@@ -136,7 +113,6 @@ public class LinkStrand implements IDnaStrand{
 			newList.addToStart(new StringStrand(iter.info).reverse().toString());
 			iter = iter.next;
 		}
-		System.out.println("Reverdasdfds: "+newList.toString());
 		return newList;
 	}
 

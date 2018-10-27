@@ -18,7 +18,7 @@ public class LinkStrand implements IDnaStrand{
 	   	}
 	}
 	private Node myFirst,myLast;
-	private long mySize;
+	private long mySize = 0;
 	
 	/**
 	 * Create a strand representing s.

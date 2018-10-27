@@ -95,11 +95,34 @@ public class LinkStrand implements IDnaStrand{
 	 * 
 	 * @param dna: the String to add to this strand
 	 */
-	public void addToStart(String dna) {
+	private void addToStart(String dna) {
 		Node newNode = new Node(dna);
 		newNode.next = myFirst;
 		myFirst = newNode;
 	}
+
+	/*
+
+	@Override
+	public IDnaStrand reverse() {
+		Node newList = null;
+		Node iter = myFirst;
+		while(iter != null) {
+			Node temp = iter;
+			iter = iter.next;
+			temp.info = new StringStrand(temp.info).reverse().toString();
+			temp.next = newList;
+			if (newList == null) {
+				myLast = temp;
+			}
+			newList = temp;
+		}
+		// Now we have a reversed list
+		myFirst = newList;
+		return this;
+	}
+
+	*/
 
 	/**
 	 * Reverse the linked list containing this strand.

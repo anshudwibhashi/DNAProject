@@ -135,7 +135,11 @@ public class LinkStrand implements IDnaStrand{
 			}
 		}
 		myIndex = index;
-		return myCurrent.info.charAt(myLocalIndex);
+		try {
+			return myCurrent.info.charAt(myLocalIndex);
+		} catch (Exception e) {
+			throw(new IndexOutOfBoundsException());
+		}
 	}
 	
 	/**

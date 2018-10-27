@@ -95,7 +95,6 @@ public class LinkStrand implements IDnaStrand{
 	 * 
 	 * @param dna: the String to add to this strand
 	 */
-	@Override
 	public void addToStart(String dna) {
 		Node newNode = new Node(dna);
 		newNode.next = myFirst;

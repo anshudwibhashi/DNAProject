@@ -130,6 +130,11 @@ public class LinkStrand implements IDnaStrand{
 		if (myIndex == 0 && myCurrent == null) {
 			myCurrent = myFirst;
 		}
+		if (myIndex > index) {
+		    myIndex = 0;
+		    myLocalIndex = 0;
+		    myCurrent = myFirst;
+		}
 		while (myIndex != index) {
 			myIndex++; myLocalIndex++;
 			if (myCurrent == null) {
